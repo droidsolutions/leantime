@@ -9,6 +9,7 @@ RUN apk update && apk add --no-cache \
     icu-libs \
     jpegoptim optipng pngquant gifsicle \
     oniguruma-dev \
+    composer \
     supervisor \
     apache2 \
     apache2-ctl \
@@ -22,9 +23,9 @@ RUN docker-php-ext-install gd
 COPY . .
 RUN apk update && apk add nodejs npm && \
     npm install && \
-    COMPOSER_ALLOW_SUPERUSER=1 ./composer.phar install && \
+    COMPOSER_ALLOW_SUPERUSER=1 composer install && \
     ./node_modules/grunt/bin/grunt Build-All && \
-    apk del nodejs npm
+    apk del nodejs npm composer
 
 RUN chown www-data -R .
 
