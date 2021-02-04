@@ -1,0 +1,6 @@
+.git
+.vscode
+.DS_store
+.github
+node_modules/
+vendor/
