@@ -372,6 +372,10 @@ namespace leantime\domain\repositories {
                 $query .= " AND LOWER(zp_tickets.type) = LOWER(:searchType) ";
             }
 
+            if($searchCriteria["priority"]  != "") {
+                $query .= " AND LOWER(zp_tickets.priority) = LOWER(:searchPriority) ";
+            }
+
             if($searchCriteria["term"]  != "") {
                 $query .= " AND (FIND_IN_SET(:termStandard, zp_tickets.tags) OR zp_tickets.headline LIKE :termWild OR zp_tickets.description LIKE :termWild OR zp_tickets.id LIKE :termWild)";
             }
@@ -409,6 +413,9 @@ namespace leantime\domain\repositories {
 
             if($searchCriteria["type"]  != "") {
                 $stmn->bindValue(':searchType', $searchCriteria["type"], PDO::PARAM_STR);
+            }
+            if($searchCriteria["priority"]  != "") {
+                $stmn->bindValue(':searchPriority', $searchCriteria["priority"], PDO::PARAM_STR);
             }
 
             if($searchCriteria["users"]  != "") {

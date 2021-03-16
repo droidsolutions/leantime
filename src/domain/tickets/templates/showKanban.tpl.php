@@ -167,6 +167,25 @@
                     </div>
 
                     <div class="filterBoxLeft">
+
+                        <label class="inline"><?=$this->__("label.todo_priority") ?></label>
+                        <div class="form-group">
+                            <select data-placeholder="<?=$this->__("input.placeholders.filter_by_priority") ?>" title="<?=$this->__("input.placeholders.filter_by_priority") ?>" name="type" id="prioritySelect">
+                                <option value=""><?=$this->__("label.all_priorities") ?></option>
+                                <?php foreach($this->get('priorities') as $priorityKey=>$priorityValue){ 	?>
+
+                                    <?php echo"<option value='".$priorityKey."'";
+
+                                    if(isset($searchCriteria['priority']) && ($searchCriteria['priority'] == $priorityKey)) echo" selected='selected' ";
+
+                                    echo">$priorityValue</option>"; ?>
+
+                                <?php } 	?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="filterBoxLeft">
                         <label class="inline"><?=$this->__("label.search_term") ?></label><br />
                         <input type="text" class="form-control input-default" id="termInput" name="term" placeholder="Search" value="<?php $this->e($searchCriteria['term']); ?>">
                         <input type="submit" value="Search" class="form-control btn btn-primary pull-left" />

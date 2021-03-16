@@ -157,7 +157,7 @@
 
                         <label class="inline"><?=$this->__("label.todo_type") ?></label>
                         <div class="form-group">
-                            <select data-placeholder="<?=$this->__("input.placeholders.filter_by_tye") ?>" title="<?=$this->__("input.placeholders.filter_by_tye") ?>" name="type" id="typeSelect">
+                            <select data-placeholder="<?=$this->__("input.placeholders.filter_by_type") ?>" title="<?=$this->__("input.placeholders.filter_by_type") ?>" name="type" id="typeSelect">
                                 <option value=""><?=$this->__("label.all_types") ?></option>
                                 <?php foreach($this->get('types') as $type){ 	?>
 
@@ -172,6 +172,26 @@
                         </div>
 
                     </div>
+
+                    <div class="filterBoxLeft">
+
+                        <label class="inline"><?=$this->__("label.todo_priority") ?></label>
+                        <div class="form-group">
+                            <select data-placeholder="<?=$this->__("input.placeholders.filter_by_priority") ?>" title="<?=$this->__("input.placeholders.filter_by_priority") ?>" name="type" id="prioritySelect">
+                                <option value=""><?=$this->__("label.all_priorities") ?></option>
+                                <?php foreach($this->get('priorities') as $priorityKey=>$priorityValue){ 	?>
+
+                                    <?php echo"<option value='".$priorityKey."'";
+
+                                    if(isset($searchCriteria['priority']) && ($searchCriteria['priority'] == $priorityKey)) echo" selected='selected' ";
+
+                                    echo">$priorityValue</option>"; ?>
+
+                                <?php } 	?>
+                            </select>
+                        </div>
+                    </div>
+
 
                     <div class="filterBoxLeft">
                         <label class="inline"><?=$this->__("label.todo_status") ?></label>
