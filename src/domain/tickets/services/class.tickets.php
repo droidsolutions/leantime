@@ -47,6 +47,12 @@ namespace leantime\domain\services {
 
         }
 
+        public function getPriorityLabels() {
+
+            return $this->ticketRepository->priority;
+
+        }
+
         public function getTicketTypes() {
 
             return $this->ticketRepository->type;
@@ -195,6 +201,7 @@ namespace leantime\domain\services {
                 'dateToFinish' => isset($params['dateToFinish']) ? strip_tags($params['dateToFinish']) : "",
                 'status' => isset($params['status']) ? (int) $params['status'] : 3,
                 'storypoints' => '',
+                'priority' => '',
                 'hourRemaining' => '',
                 'planHours' => '',
                 'sprint' => isset($params['sprint']) ? (int) $params['sprint'] : "",
@@ -243,6 +250,7 @@ namespace leantime\domain\services {
                 'dateToFinish' => "",
                 'status' => 3,
                 'storypoints' => '',
+                'priority' => '',
                 'hourRemaining' => '',
                 'planHours' => '',
                 'sprint' => '',
@@ -282,6 +290,7 @@ namespace leantime\domain\services {
                 'tags' => $values['tags'],
                 'sprint' => $values['sprint'],
                 'storypoints' => $values['storypoints'],
+                'priority' => $values['priority'],
                 'hourRemaining' => $values['hourRemaining'],
                 'acceptanceCriteria' => $values['acceptanceCriteria'],
                 'editFrom' => $values['editFrom'],
@@ -350,6 +359,7 @@ namespace leantime\domain\services {
                 'tags' => $values['tags'],
                 'sprint' => $values['sprint'],
                 'storypoints' => $values['storypoints'],
+                'priority' => $values['priority'],
                 'hourRemaining' => $values['hourRemaining'],
                 'acceptanceCriteria' => $values['acceptanceCriteria'],
                 'editFrom' => $values['editFrom'],
@@ -422,6 +432,7 @@ namespace leantime\domain\services {
                 'dateToFinish' => "",
                 'status' => $params['status'],
                 'storypoints' => '',
+                'priority' => '',
                 'hourRemaining' => '',
                 'planHours' => '',
                 'sprint' => '',
@@ -458,6 +469,7 @@ namespace leantime\domain\services {
                 'dateToFinish' => "",
                 'status' => $values['status'],
                 'storypoints' => "",
+                'priority' => "",
                 'hourRemaining' => $values['hourRemaining'],
                 'planHours' => $values['planHours'],
                 'sprint' => "",

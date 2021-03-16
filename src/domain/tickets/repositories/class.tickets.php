@@ -974,6 +974,7 @@ namespace leantime\domain\repositories {
 						tags, 
 						sprint,
 						storypoints,
+						priority,
 						hourRemaining,
 						planHours,
 						acceptanceCriteria,
@@ -995,6 +996,7 @@ namespace leantime\domain\repositories {
 						:tags,
 						:sprint,
 						:storypoints,
+						:priority,
 						:hourRemaining,
 						:planHours,
 						:acceptanceCriteria,
@@ -1020,6 +1022,7 @@ namespace leantime\domain\repositories {
 
             $stmn->bindValue(':sprint', $values['sprint'], PDO::PARAM_STR);
             $stmn->bindValue(':storypoints', $values['storypoints'], PDO::PARAM_STR);
+            $stmn->bindValue(':priority', $values['priority'], PDO::PARAM_STR);
             $stmn->bindValue(':hourRemaining', $values['hourRemaining'], PDO::PARAM_STR);
             $stmn->bindValue(':planHours', $values['planHours'], PDO::PARAM_STR);
             $stmn->bindValue(':acceptanceCriteria', $values['acceptanceCriteria'], PDO::PARAM_STR);
@@ -1093,6 +1096,7 @@ namespace leantime\domain\repositories {
 				dateToFinish = :dateToFinish,
 				sprint = :sprint,
 				storypoints = :storypoints,
+				priority = :priority,
 				hourRemaining = :hourRemaining,
 				planHours = :planHours,
 				tags = :tags,
@@ -1113,6 +1117,7 @@ namespace leantime\domain\repositories {
             $stmn->bindValue(':dateToFinish', $values['dateToFinish'], PDO::PARAM_STR);
             $stmn->bindValue(':sprint', $values['sprint'], PDO::PARAM_STR);
             $stmn->bindValue(':storypoints', $values['storypoints'], PDO::PARAM_STR);
+            $stmn->bindValue(':priority', $values['priority'], PDO::PARAM_STR);
             $stmn->bindValue(':hourRemaining', $values['hourRemaining'], PDO::PARAM_STR);
             $stmn->bindValue(':acceptanceCriteria', $values['acceptanceCriteria'], PDO::PARAM_STR);
             $stmn->bindValue(':planHours', $values['planHours'], PDO::PARAM_STR);

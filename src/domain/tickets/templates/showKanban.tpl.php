@@ -9,6 +9,7 @@
     $todoTypeIcons  = $this->get("ticketTypeIcons");
 
     $efforts        = $this->get('efforts');
+    $priorities     = $this->get('priorities');
 
     //All states >0 (<1 is archive)
     $numberofColumns = count($this->get('allTicketStates'))-1;
@@ -337,6 +338,27 @@
                                                 </ul>
                                             </div>
 
+                                            <div class="dropdown ticketDropdown priorityDropdown show">
+                                                <a class="dropdown-toggle f-left  label-default priority" href="javascript:void(0);" role="button" id="priorityDropdownMenuLink<?=$row['id']?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <span class="text"><?php
+                                                                    if($row['priority'] != '' && $row['priority'] > 0) {
+                                                                        echo $priorities[$row['priority']];
+                                                                    }else{
+                                                                        echo $this->__("label.priority_unkown");
+                                                                    }?>
+                                                                </span>
+                                                    &nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                                </a>
+                                                <ul class="dropdown-menu" aria-labelledby="priorityDropdownMenuLink<?=$row['id']?>">
+                                                    <li class="nav-header border"><?=$this->__("dropdown.select_priority")?></li>
+                                                    <?php foreach($priorities as $priorityKey => $priorityValue){
+                                                        echo"<li class='dropdown-item'>
+                                                                            <a href='javascript:void(0);' data-value='".$row['id']."_".$priorityKey."' id='ticketPriorityChange".$row['id'].$priorityKey."'>".$priorityValue."</a>";
+                                                        echo"</li>";
+                                                    }?>
+                                                </ul>
+                                            </div>
+
                                             <div class="dropdown ticketDropdown userDropdown noBg show right lastDropdown dropRight">
                                                 <a class="dropdown-toggle f-left" href="javascript:void(0);" role="button" id="userDropdownMenuLink<?=$row['id']?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                 <span class="text">
@@ -391,6 +413,7 @@
     leantime.ticketsController.initUserDropdown();
     leantime.ticketsController.initMilestoneDropdown();
     leantime.ticketsController.initEffortDropdown();
+    leantime.ticketsController.initPriorityDropdown();
     leantime.ticketsController.initUserSelectBox();
     leantime.ticketsController.initStatusSelectBox();
 

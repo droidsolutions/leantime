@@ -563,6 +563,49 @@ leantime.ticketsController = (function () {
 
     };
 
+    var initPriorityDropdown = function() {
+        // '1' => 'Critical', '2' => 'High', '3' => 'Medium', '4' => 'Low'
+        var priorityLabels = {
+            '1': 'Critical',
+            '2': 'High',
+            '3': "Medium",
+            '4': "Low"
+        };
+
+        jQuery("body").on("click", ".priorityDropdown .dropdown-menu a", function () {
+
+            var dataValue = jQuery(this).attr("data-value").split("_");
+
+            if (dataValue.length === 2) {
+
+                var ticketId = dataValue[0];
+                var priorityId = dataValue[1];
+
+                jQuery.ajax(
+                    {
+                        type: 'PATCH',
+                        url: leantime.appUrl+'/api/tickets',
+                        data:
+                            {
+                                id: ticketId,
+                                priority: priorityId
+                            }
+                    }
+                ).done(
+                    function () {
+                        jQuery("#priorityDropdownMenuLink" + ticketId + " span.text").text(priorityLabels[priorityId]);
+                        jQuery.jGrowl(leantime.i18n.__("short_notifications.priority_updated"));
+
+                    }
+                );
+
+            }else{
+                console.log("Ticket Controller: Priority data value not set correctly");
+            }
+        });
+
+    };
+
     var initMilestoneDropdown = function () {
 
         jQuery("body").on(
@@ -1288,6 +1331,7 @@ leantime.ticketsController = (function () {
         initStatusSelectBox:initStatusSelectBox,
         initTicketsTable:initTicketsTable,
         initEffortDropdown:initEffortDropdown,
+        initPriorityDropdown:initPriorityDropdown,
         initMilestoneDropdown:initMilestoneDropdown,
         initStatusDropdown:initStatusDropdown,
         initUserDropdown:initUserDropdown,
