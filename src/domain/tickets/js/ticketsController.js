@@ -569,7 +569,8 @@ leantime.ticketsController = (function () {
             '1': 'Critical',
             '2': 'High',
             '3': "Medium",
-            '4': "Low"
+            '4': "Low",
+            '5': "Lowest"
         };
 
         jQuery("body").on("click", ".priorityDropdown .dropdown-menu a", function () {
